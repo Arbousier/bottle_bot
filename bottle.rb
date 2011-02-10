@@ -84,7 +84,7 @@ bot = Cinch::Bot.new do
     logfile = "logs/#{Time.now.strftime("%d-%m-%Y_arbousier.log")}"
     File.open(logfile, 'w') {} unless File.exist?(logfile)
     File.open(logfile, 'a') do |log|
-      log.puts("#{Time.now.strftime("%H:%M:%S")} <#{m.user}> #{m.message}") unless m.message =~ /[nolog]/
+      log.puts("#{Time.now.strftime("%H:%M:%S")} <#{m.user}> #{m.message}") unless m.message =~ /\[nolog\]/
     end
   end
 
