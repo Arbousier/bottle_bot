@@ -80,6 +80,14 @@ bot = Cinch::Bot.new do
     end
   end
 
+  on :message, /(.+)/ do |m|
+    logfile = "logs/#{Time.now.strftime("%d-%m-%Y_arbousier.log")}"
+    File.open(log_file, 'w') {} unless File.exist?(logfile)
+    File.open(log_file, 'a') do |log|
+      log.puts("#{m.user}: #{m.message}")
+    end
+  end
+
   on :message, "#{MY_NAME}: hello" do |m|
     m.reply "Hello, #{m.user.nick}"
   end
